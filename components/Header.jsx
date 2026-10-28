@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
@@ -16,8 +16,14 @@ const LINKS = [
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Links only prefetch once visible, and the mobile menu hides them, so warm every menu page up front
+  useEffect(() => {
+    [...LINKS.map(([href]) => href), "/contact"].forEach((href) => router.prefetch(href));
+  }, [router]);
 
   // Mobile menu closes after navigating
   useEffect(() => setOpen(false), [pathname]);
