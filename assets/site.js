@@ -20,7 +20,7 @@
   onScroll();
 
   // Reveal sections as they enter the viewport (siblings stagger slightly)
-  var groups = ['.section-head', '.tiles', '.grid', '.steps', '.facts', '.timeline', '.faq', '.service', '.prose', '.details', '.cta-band .wrap'];
+  var groups = ['.section-head', '.tiles', '.grid', '.steps', '.facts', '.timeline', '.faq', '.service', '.prose', '.details', '.founder', '.cta-band .wrap'];
   var targets = [];
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) {
